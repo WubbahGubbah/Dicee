@@ -20,9 +20,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var DiceImageView1: UIImageView!
     @IBOutlet weak var DiceImageView2: UIImageView!
     
+    //called upon app start
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        updateDiceImages()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,18 +32,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //button click
     @IBAction func ButtonRollPressed(_ sender: UIButton) {
         
+        updateDiceImages()
+    }
+    
+    //refactored code to run the update
+    func updateDiceImages() {
         m_RandomDiceIndex1 = Int(arc4random_uniform(m_DiceRandomUpperBound))
         
         m_RandomDiceIndex2 = Int(arc4random_uniform(m_DiceRandomUpperBound))
         
-        print(m_RandomDiceIndex1)
-        
         DiceImageView1.image = UIImage(named: m_DiceArray[m_RandomDiceIndex1])
         
         DiceImageView2.image = UIImage(named: m_DiceArray[m_RandomDiceIndex2])
-        
     }
     
 }
