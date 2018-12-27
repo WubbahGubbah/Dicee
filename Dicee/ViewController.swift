@@ -12,7 +12,10 @@ class ViewController: UIViewController {
     
     var m_RandomDiceIndex1 : Int = 0
     var m_RandomDiceIndex2 : Int = 0
-    var m_DiceRandomUpperBound : UInt32 = 6
+    
+    let m_DiceRandomUpperBound : UInt32 = 6
+    let m_DiceArray = ["dice1","dice2","dice3","dice4","dice5","dice6"]
+    
     
     @IBOutlet weak var DiceImageView1: UIImageView!
     @IBOutlet weak var DiceImageView2: UIImageView!
@@ -34,6 +37,11 @@ class ViewController: UIViewController {
         m_RandomDiceIndex2 = Int(arc4random_uniform(m_DiceRandomUpperBound))
         
         print(m_RandomDiceIndex1)
+        
+        DiceImageView1.image = UIImage(named: m_DiceArray[m_RandomDiceIndex1])
+        
+        DiceImageView2.image = UIImage(named: m_DiceArray[m_RandomDiceIndex2])
+        
     }
     
 }
